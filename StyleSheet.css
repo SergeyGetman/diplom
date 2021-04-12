@@ -116,6 +116,10 @@ hr {
     align-items: center;
 }
 
+.header__inner:hover {
+    cursor: pointer;
+}
+
 
 /*header__logo*/
 
@@ -549,6 +553,8 @@ hr {
     position: relative;
     border-bottom: 1px solid #e5e5e5;
     cursor: pointer;
+    display: block;
+    overflow: hidden;
     /*меняет внешний вид курсора*/
 }
 
@@ -584,6 +590,15 @@ hr {
     color: #999;
     font-style: italic;
     font-weight: 300;
+    opacity: 0;
+    height: 0px;
+    transition: all 1s;
+}
+
+.accordion__content.visible {
+    opacity: 1;
+    transition: all 1s;
+    height: 333px;
 }
 
 .accordion__title {
@@ -887,30 +902,33 @@ hr {
     height: auto;
 }
 
-
-}
 .blog_date-day {
     font-size: 30px;
     line-height: 1;
     font-weight: 700;
     font-style: normal;
 }
+
 .blog_content {
     margin-bottom: 10px;
 }
+
 .blog__title {
     margin-bottom: 10px;
     font-size: 14px;
     color: #333;
     text-transform: uppercase;
 }
+
 .blog__title a {
     color: inherit;
 }
+
 .blog-text {
     font-size: 15px;
     color: #999;
 }
+
 .blog__footer {
     padding-top: 14px;
     border-top: 1px solid #e5e5e5;
@@ -919,20 +937,24 @@ hr {
     font-style: italic;
     color: #999;
 }
+
 .blog-stat__item {
     display: inline-block;
     vertical-align: top;
     margin-right: 10px;
 }
+
 .map {
     text-align: center;
 }
+
 .map__title {
     font-size: 24px;
     color: #f52020;
     font-weight: 700;
     text-transform: uppercase;
 }
+
 .map__title:after {
     content: "";
     display: block;
@@ -941,13 +963,16 @@ hr {
     margin: 15px auto 0;
     background-color: #f62020;
 }
+
 .map__title a {
     color: inherit;
     text-decoration: none;
 }
+
 .map__title a:hover {
     text-decoration: underline;
 }
+
 .copyright {
     padding: 20px 0;
     border-top: 1px solid #e5e5e5;
@@ -955,11 +980,14 @@ hr {
     color: #333;
     text-align: center;
 }
+
 .copyright span {
     color: #ff0000;
 }
 
+
 /*форма регистрации*/
+
 #table {
     background: none;
     color: #fff;
@@ -967,12 +995,14 @@ hr {
     width: 350px;
     height: 250px;
 }
+
 .input__images {
     width: 400px;
     position: absolute;
     left: 50%;
     margin-left: -889px;
 }
+
 #counter {
     text-align: center;
     background-color: none;
@@ -980,24 +1010,30 @@ hr {
     font-size: 25px;
     font-family: Arial;
 }
+
 .counter__color {
     color: #ffd800;
 }
+
 #loginform {
     background-color: none;
 }
+
 .contackts {
     text-align: center;
 }
+
 h2 {
     margin: 0;
     text-transform: uppercase;
     padding-bottom: 5px;
 }
+
 #inp {
     margin: 10px;
     padding: 10px;
 }
+
 #forma {
     background-color: #83baf0;
     height: 392px;
@@ -1008,18 +1044,204 @@ h2 {
     margin-left: auto;
     margin-right: auto;
 }
+
 input {
     margin-top: 10px;
     height: 40px;
     width: 300px;
     border-radius: 20px;
 }
+
 button {
     height: 40px;
     width: 100px;
     border-radius: 10px;
 }
+
 textarea {
     height: 150px;
     width: 450px;
+}
+
+.popup-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0, 0.8);
+    display: none;
+    z-index: 10;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 450px;
+    background: seashell;
+    padding: 50px;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgb(22, 24, 22);
+    box-shadow: #ccc;
+    border-radius: 20px;
+    background-image: url(images/mini_logo.jpg);
+    color: rgb(22, 24, 22);
+    font-weight: 300;
+    font-family: cursive;
+    font-size: 20px;
+}
+
+.close__popup {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.dws-button * {
+    margin: 0;
+    padding: 0;
+}
+
+.dws-button {
+    font-family: Cuprum, Arial, Verdana, sans-serif;
+    width: 250px;
+    height: 70px;
+    right: 25%;
+    position: absolute;
+    margin-top: 80px;
+}
+
+.b-demo,
+.b-text,
+.b-img,
+.b-demo:before,
+.b-img:after {
+    position: absolute;
+    transition: all 1.5s;
+}
+
+.dws-button a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.b-demo,
+.b-img {
+    background: rgb(82, 46, 184);
+}
+
+.b-demo {
+    width: 105px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    padding: 0 10px 0 15px;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    border-radius: 10px 0 0 10px;
+    text-shadow: -1px -1px 1px #000000;
+}
+
+.b-text {
+    background: rgb(86, 183, 224);
+    color: #ffffff;
+    font-size: 18px;
+    width: 150px;
+    line-height: 20px;
+    text-align: center;
+    padding: 10px 0 10px 10px;
+    left: 5px;
+    top: 5px;
+}
+
+.b-img {
+    width: 65px;
+    line-height: 45px;
+    padding: 20px 0 0 20px;
+    left: 110px;
+    top: 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.b-demo:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 35px solid transparent;
+    border-left: 10px solid rgb(82, 46, 184);
+    border-bottom: 35px solid transparent;
+    top: 0;
+    left: 105px;
+}
+
+.b-img:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 35px solid transparent;
+    border-left: 10px solid #5cb0e0;
+    border-bottom: 35px solid transparent;
+    top: 0;
+    left: 0;
+}
+
+
+/* Animation :hover */
+
+.dws-button a:hover .b-demo,
+.dws-button a:hover .b-demo:before,
+.dws-button a:hover .b-text,
+.dws-button a:hover .b-img,
+.dws-button a:hover .b-img:after {
+    transition: all 0.5s;
+}
+
+.dws-button a:hover .b-demo {
+    width: 50px;
+    padding: 0 10px 0 10px;
+    font-size: 20px;
+}
+
+.dws-button a:hover .b-demo:before {
+    left: 69px;
+}
+
+.dws-button a:hover .b-img {
+    left: 185px;
+}
+
+.dws-button a:hover .b-text {
+    left: 50px;
+}
+
+.b-img img {
+    transition: all 1.5s;
+}
+
+.dws-button a:hover img {
+    transform: rotate(360deg);
+    opacity: 0.5;
+}
+
+
+/* Animation :active */
+
+.dws-button a:active .b-demo,
+.dws-button a:active .b-img {
+    background: rgb(242, 36, 4);
+}
+
+.dws-button a:active .b-text {
+    background: rgb(33, 126, 167);
+    box-shadow: 0 0 3px 1px #2b94bd;
+}
+
+.dws-button a:active img {
+    transform: rotate(0deg);
+    opacity: 1;
 }
