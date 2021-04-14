@@ -1,6 +1,14 @@
 ﻿/*верхний скролл_one*/
 
 
+
+
+
+
+
+
+
+
 let teopenModalt = document.querySelector("#unikalText"); // получаем текст на который скролим
 let navigatorBtn = document.querySelector("#btnDiznatus"); //получаем центральный btn
 const smoothLinks = document.querySelectorAll('.nav__link'); // получаем все nav сверху header
@@ -18,11 +26,11 @@ function scrollBtn(itement) {
     itement.scrollIntoView({ block: "center", behavior: "smooth" });
 }
 
-let arr = [teopenModalt, centerTeopenModalt, centreTeopenModaltUnder, team, form]; // массив всех элементов header
+const arrHeaderElement = [teopenModalt, centerTeopenModalt, centreTeopenModaltUnder, team, form]; // массив всех элементов header
 
 navigatorBtn.addEventListener("click", scrollBtn); // центральная кнопка скоролит на текст ниже
 for (let i = 0; i < smoothLinks.length; i++) { // перебор циклом всех элементов header
-    smoothLinks[i].addEventListener("click", () => scrollBtn(arr[i]));
+    smoothLinks[i].addEventListener("click", () => scrollBtn(arrHeaderElement[i]));
 }
 
 
@@ -119,11 +127,6 @@ if ("" == document.cookie) { // Инициализация cookie.
 }
 
 
-/*вызов функций*/
-$(document).ready(function() {
-    FormRegisted();
-});
-
 
 for (var smoothLink of smoothLinks) {
     smoothLink.addEventListener('click', function(e) {
@@ -170,10 +173,72 @@ let textAccordoinContent = document.querySelector(".accordion__content"); // upp
 let x = document.querySelectorAll("#accord__new");
 
 allAccordionHeader.forEach(item => {
-    item.querySelector(".accordion__header").addEventListener('click', (e) => {
+    item.querySelector(".accordion__header").addEventListener('click', () => {
         item.querySelector(".accordion__content").classList.toggle("visible");
         item.classList.toggle("active");
     });
 });
 
-console.log(textAccordoinContent);
+
+
+// timer 
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Timer {
+    constructor(time) {
+        this.time = time;
+        this.startMinutes = this.time; // количество секунд
+        this.timerOutPut = document.querySelector(".counterTimerInside"); // получаем секунды
+        this.inputPhoneHeader = document.querySelector(".inputHeader"); // получение input с хедера 
+        this.buttonStartTimer = document.querySelector(".timerButton"); //
+        this.seconds = time;
+        this.interval = 0;
+
+    }
+
+    startTimer() {
+        this.inputPhoneHeader.value = "";
+        //проверка на запуска только одного раза нажатия по 1 секунде
+        if (!this.interval) {
+            this.interval = setInterval(this.updateTimer.bind(this), 1000);
+        }
+        this.startMinutes = this.time;
+    }
+
+    stopTimer() {
+        clearInterval(this.interval); // очищает интервал 
+        this.interval = undefined;
+        alert("мы перезвоним вам по данному номеру");
+    }
+
+    updateTimer() {
+            this.seconds = this.startMinutes % 60;
+            if (this.seconds < 0) {
+                this.stopTimer();
+            }
+            if (this.seconds >= 0) {
+                this.render();
+            }
+            this.startMinutes--;
+        }
+        //отрисовка
+    render() {
+        this.timerOutPut.textContent = `00:${this.seconds < 10 ? "0" + this.seconds : this.seconds}`;
+    }
+
+}
+
+let timerConstr = new Timer(15);
+timerConstr.render();
+timerConstr.buttonStartTimer.addEventListener("click", timerConstr.startTimer.bind(timerConstr));
