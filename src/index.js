@@ -1,13 +1,8 @@
-﻿/*верхний скролл_one*/
+//import timer
+import Timer from "./timer.js";
 
 
-
-
-
-
-
-
-
+/*верхний скролл_one*/
 
 let teopenModalt = document.querySelector("#unikalText"); // получаем текст на который скролим
 let navigatorBtn = document.querySelector("#btnDiznatus"); //получаем центральный btn
@@ -32,8 +27,6 @@ navigatorBtn.addEventListener("click", scrollBtn); // центральная к�
 for (let i = 0; i < smoothLinks.length; i++) { // перебор циклом всех элементов header
     smoothLinks[i].addEventListener("click", () => scrollBtn(arrHeaderElement[i]));
 }
-
-
 
 
 
@@ -181,64 +174,8 @@ allAccordionHeader.forEach(item => {
 
 
 
-// timer 
 
 
-
-
-
-
-
-
-
-
-
-
-
-class Timer {
-    constructor(time) {
-        this.time = time;
-        this.startMinutes = this.time; // количество секунд
-        this.timerOutPut = document.querySelector(".counterTimerInside"); // получаем секунды
-        this.inputPhoneHeader = document.querySelector(".inputHeader"); // получение input с хедера 
-        this.buttonStartTimer = document.querySelector(".timerButton"); //
-        this.seconds = time;
-        this.interval = 0;
-
-    }
-
-    startTimer() {
-        this.inputPhoneHeader.value = "";
-        //проверка на запуска только одного раза нажатия по 1 секунде
-        if (!this.interval) {
-            this.interval = setInterval(this.updateTimer.bind(this), 1000);
-        }
-        this.startMinutes = this.time;
-    }
-
-    stopTimer() {
-        clearInterval(this.interval); // очищает интервал 
-        this.interval = undefined;
-        alert("мы перезвоним вам по данному номеру");
-    }
-
-    updateTimer() {
-            this.seconds = this.startMinutes % 60;
-            if (this.seconds < 0) {
-                this.stopTimer();
-            }
-            if (this.seconds >= 0) {
-                this.render();
-            }
-            this.startMinutes--;
-        }
-        //отрисовка
-    render() {
-        this.timerOutPut.textContent = `00:${this.seconds < 10 ? "0" + this.seconds : this.seconds}`;
-    }
-
-}
-
-let timerConstr = new Timer(15);
+let timerConstr = new Timer(18);
 timerConstr.render();
 timerConstr.buttonStartTimer.addEventListener("click", timerConstr.startTimer.bind(timerConstr));
