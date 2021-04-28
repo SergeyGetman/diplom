@@ -1,6 +1,8 @@
 //import timer
 import Timer from "./timer.js";
 import { parseCookie, setCookie } from "./cookies.js";
+import accord from "./accordion.js";
+
 
 
 /*верхний скролл_one*/
@@ -120,21 +122,12 @@ setTimeout(() => {
 
 
 // accordion
-let allAccordionHeader = document.querySelectorAll(".accordion__item"); // header accordion
-let textAccordoinContent = document.querySelector(".accordion__content"); // upper text accordion
-let x = document.querySelectorAll("#accord__new");
-
-allAccordionHeader.forEach(item => {
-    item.querySelector(".accordion__header").addEventListener('click', () => {
-        item.querySelector(".accordion__content").classList.toggle("visible");
-        item.classList.toggle("active");
-    });
-});
+accord();
 
 
 
 
 
-let timerConstr = new Timer(18);
+let timerConstr = new Timer(30);
 timerConstr.render();
 timerConstr.buttonStartTimer.addEventListener("click", timerConstr.startTimer.bind(timerConstr));

@@ -4,7 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "div": "webpack --mode development",
+        "watch": "webpack --watch"
     },
     "repository": {
         "type": "git",
@@ -15,5 +17,10 @@
     "bugs": {
         "url": "https://github.com/SergeyGetman/diplom/issues"
     },
-    "homepage": "https://github.com/SergeyGetman/diplom#readme"
+    "homepage": "https://github.com/SergeyGetman/diplom#readme",
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^8.2.2",
+        "babel-preset-env": "^1.7.0"
+    }
 }
